@@ -1,3 +1,6 @@
 {
-  "extends": "eslint-config-airbnb-improved"
+  "extends": "eslint-config-airbnb-improved",
+  "rules": {
+    "sort-keys": "off"
+  }
 }
