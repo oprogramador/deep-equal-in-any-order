@@ -2,14 +2,12 @@
   "name": "deep-equal-in-any-order",
   "version": "1.0.0",
   "description": "chai plugin to match objects and arrays deep equality with arrays (including nested ones) being in any order",
-  "main": "build/index.js",
+  "main": "src/index.js",
   "scripts": {
-    "build": "rm -rf build && babel src --out-dir build --ignore tests",
     "create-project-symlink": "scripts/create-project-symlink.sh",
     "lint": "eslint src",
     "postinstall": "npm run create-project-symlink",
-    "prepublish": "npm run build",
-    "test": "mocha -r babel-register --recursive src/tests --timeout 5000"
+    "test": "mocha --recursive src/tests --timeout 5000"
   },
   "repository": {
     "type": "git",
@@ -23,10 +21,6 @@
   },
   "homepage": "https://github.com/oprogramador/deep-equal-in-any-order#readme",
   "devDependencies": {
-    "babel-cli": "^6.24.0",
-    "babel-core": "^6.24.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.0",
-    "babel-register": "^6.24.0",
     "chai": "^3.5.0",
     "chai-as-promised": "^6.0.0",
     "chai-subset": "^1.5.0",
