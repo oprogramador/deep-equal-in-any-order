@@ -1,6 +1,6 @@
 const expect = require('deep-equal-in-any-order/tests/expect');
 
-describe.skip('equalInAnyOrder', () => {
+describe('equalInAnyOrder', () => {
   it('matches true with true', () => {
     expect(true).to.deep.equalInAnyOrder(true);
   });
