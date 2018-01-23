@@ -7,4 +7,4 @@ cd ..
 path=node_modules/deep-equal-in-any-order
 mkdir -p node_modules
 rm -f $path
-ln -s ../${APP_DIR:=build} $path
+ln -s ../${APP_DIR:=src} $path
