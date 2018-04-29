@@ -1,60 +1,70 @@
 const expect = require('deep-equal-in-any-order/tests/expect');
 
+const expectToDeepEqualInAnyOrder = (a, b) => {
+  expect(a).to.deep.equalInAnyOrder(b);
+  expect(() => expect(a).to.not.deep.equalInAnyOrder(b)).to.throw();
+};
+
+const expectToNotDeepEqualInAnyOrder = (a, b) => {
+  expect(a).to.not.deep.equalInAnyOrder(b);
+  expect(() => expect(a).to.deep.equalInAnyOrder(b)).to.throw();
+};
+
 describe('equalInAnyOrder', () => {
   it('matches true with true', () => {
-    expect(true).to.deep.equalInAnyOrder(true);
+    expectToDeepEqualInAnyOrder(true, true);
   });
 
   it('matches false with false', () => {
-    expect(false).to.deep.equalInAnyOrder(false);
+    expectToDeepEqualInAnyOrder(false, false);
   });
 
   it('does not match false with true', () => {
-    expect(false).to.not.deep.equalInAnyOrder(true);
+    expectToNotDeepEqualInAnyOrder(false, true);
   });
 
   it('matches null with null', () => {
-    expect(null).to.deep.equalInAnyOrder(null);
+    expectToDeepEqualInAnyOrder(null, null);
   });
 
   it('matches zero with zero', () => {
-    expect(0).to.deep.equalInAnyOrder(0);
+    expectToDeepEqualInAnyOrder(0, 0);
   });
 
   it('matches positive number with the same number', () => {
-    expect(7).to.deep.equalInAnyOrder(7);
+    expectToDeepEqualInAnyOrder(7, 7);
   });
 
   it('does not match different numbers', () => {
-    expect(7).to.not.deep.equalInAnyOrder(2);
+    expectToNotDeepEqualInAnyOrder(7, 2);
   });
 
   it('matches empty string with empty string', () => {
-    expect('').to.deep.equalInAnyOrder('');
+    expectToDeepEqualInAnyOrder('', '');
   });
 
   it('matches non-empty string with the same string', () => {
-    expect('foo').to.deep.equalInAnyOrder('foo');
+    expectToDeepEqualInAnyOrder('foo', 'foo');
   });
 
   it('does not match different strings', () => {
-    expect('foo').to.not.deep.equalInAnyOrder('bar');
+    expectToNotDeepEqualInAnyOrder('foo', 'bar');
   });
 
   it('matches empty object with empty object', () => {
-    expect({}).to.deep.equalInAnyOrder({});
+    expectToDeepEqualInAnyOrder({}, {});
   });
 
   it('matches empty array with empty array', () => {
-    expect([]).to.deep.equalInAnyOrder([]);
+    expectToDeepEqualInAnyOrder([], []);
   });
 
   it('does not match empty object with empty array', () => {
-    expect({}).to.not.deep.equalInAnyOrder([]);
+    expectToNotDeepEqualInAnyOrder({}, []);
   });
 
   it('does not match empty array with empty object', () => {
-    expect([]).to.not.deep.equalInAnyOrder({});
+    expectToNotDeepEqualInAnyOrder([], {});
   });
 
   it('matches same flat objects', () => {
@@ -66,7 +76,7 @@ describe('equalInAnyOrder', () => {
       foo: 'bar',
       foo2: 'bar2',
     };
-    expect(a).to.deep.equalInAnyOrder(b);
+    expectToDeepEqualInAnyOrder(a, b);
   });
 
   it('matches same flat objects with different keys order', () => {
@@ -78,7 +88,7 @@ describe('equalInAnyOrder', () => {
       foo2: 'bar2',
       foo: 'bar',
     };
-    expect(a).to.deep.equalInAnyOrder(b);
+    expectToDeepEqualInAnyOrder(a, b);
   });
 
   it('does not match different flat objects', () => {
@@ -90,7 +100,7 @@ describe('equalInAnyOrder', () => {
       foo: 'bar',
       foo2: 'bar2',
     };
-    expect(a).to.not.deep.equalInAnyOrder(b);
+    expectToNotDeepEqualInAnyOrder(a, b);
   });
 
   it('matches same flat arrays', () => {
@@ -102,7 +112,7 @@ describe('equalInAnyOrder', () => {
       'foo',
       'bar',
     ];
-    expect(a).to.deep.equalInAnyOrder(b);
+    expectToDeepEqualInAnyOrder(a, b);
   });
 
   it('matches same flat arrays in different order', () => {
@@ -114,7 +124,7 @@ describe('equalInAnyOrder', () => {
       'bar',
       'foo',
     ];
-    expect(a).to.deep.equalInAnyOrder(b);
+    expectToDeepEqualInAnyOrder(a, b);
   });
 
   it('does not match different flat arrays', () => {
@@ -127,7 +137,7 @@ describe('equalInAnyOrder', () => {
       'bar',
       'baz',
     ];
-    expect(a).to.deep.equalInAnyOrder(b);
+    expectToNotDeepEqualInAnyOrder(a, b);
   });
 
   it('matches same nested objects', () => {
@@ -171,7 +181,7 @@ describe('equalInAnyOrder', () => {
         ],
       },
     };
-    expect(a).to.deep.equalInAnyOrder(b);
+    expectToDeepEqualInAnyOrder(a, b);
   });
 
   it('matches same nested objects with different items order', () => {
@@ -215,7 +225,7 @@ describe('equalInAnyOrder', () => {
         ],
       },
     };
-    expect(a).to.deep.equalInAnyOrder(b);
+    expectToDeepEqualInAnyOrder(a, b);
   });
 
   it('does not match different nested objects', () => {
@@ -259,6 +269,6 @@ describe('equalInAnyOrder', () => {
         ],
       },
     };
-    expect(a).to.not.deep.equalInAnyOrder(b);
+    expectToNotDeepEqualInAnyOrder(a, b);
   });
 });

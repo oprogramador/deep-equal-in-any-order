@@ -1,6 +1,6 @@
 {
   "name": "deep-equal-in-any-order",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "chai plugin to match objects and arrays deep equality with arrays (including nested ones) being in any order",
   "main": "build/index.js",
   "scripts": {
@@ -13,7 +13,17 @@
     "type": "git",
     "url": "git+https://github.com/oprogramador/deep-equal-in-any-order.git"
   },
-  "keywords": ["chai", "plugin", "chai-plugin", "arrays", "objects", "any", "order", "deep", "equal"],
+  "keywords": [
+    "chai",
+    "plugin",
+    "chai-plugin",
+    "arrays",
+    "objects",
+    "any",
+    "order",
+    "deep",
+    "equal"
+  ],
   "author": "oprogramador",
   "license": "MIT",
   "bugs": {
@@ -37,5 +47,9 @@
     "sinon": "^2.1.0",
     "sinon-as-promised": "^4.0.3",
     "sinon-chai": "^2.9.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.10",
+    "sort-any": "^1.1.12"
   }
 }
