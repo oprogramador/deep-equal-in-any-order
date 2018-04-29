@@ -21,7 +21,7 @@ yarn add deep-equal-in-any-order
 ```
 
 ## usage
-```
+```js
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
 
