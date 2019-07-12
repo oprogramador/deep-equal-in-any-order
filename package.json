@@ -51,6 +51,6 @@
   },
   "dependencies": {
     "lodash": "^4.17.14",
-    "sort-any": "^1.1.14"
+    "sort-any": "^1.1.15"
   }
 }
