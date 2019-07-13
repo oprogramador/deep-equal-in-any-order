@@ -3190,12 +3190,12 @@ snapdragon@^0.8.1:
     source-map-resolve "^0.5.0"
     use "^3.1.0"
 
-sort-any@^1.1.15:
-  version "1.1.15"
-  resolved "https://registry.yarnpkg.com/sort-any/-/sort-any-1.1.15.tgz#b8f2e36d1e8e60580cf066b73f34caccd982c41c"
-  integrity sha512-3I3W4IrO89TEDVFIXfunnxlKJhhRTfJsMg7VUoo4B4fIRYKqPNSxgjYh1ouSpvO+SJcqx6l+EdLV3NtwXrpqjw==
+sort-any@^1.1.16:
+  version "1.1.16"
+  resolved "https://registry.yarnpkg.com/sort-any/-/sort-any-1.1.16.tgz#7d78c02e2bdccd1327585420117e6b4535e1e942"
+  integrity sha512-zEagXgK2GI07eoaXrsycS5aBZgtXBUm4DB24ly+mqB7A88BrTb7YINd+6yTwMWEaufUC9ZLPyrqjfsfZeqTW3w==
   dependencies:
-    lodash "^4.17.11"
+    lodash "^4.17.14"
 
 source-map-resolve@^0.5.0:
   version "0.5.2"
