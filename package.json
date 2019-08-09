@@ -42,7 +42,7 @@
     "chai-subset": "^1.6.0",
     "dirty-chai": "^2.0.1",
     "eslint": "^6.1.0",
-    "eslint-config-airbnb-improved": "^4.0.10",
+    "eslint-config-airbnb-improved": "^4.0.11",
     "eslint-import-resolver-babel-module": "^5.1.0",
     "mocha": "^6.2.0",
     "sinon": "^7.4.1",
@@ -51,6 +51,6 @@
   },
   "dependencies": {
     "lodash": "^4.17.15",
-    "sort-any": "^1.1.16"
+    "sort-any": "^1.1.17"
   }
 }
