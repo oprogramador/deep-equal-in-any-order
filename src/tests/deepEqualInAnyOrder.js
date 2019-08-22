@@ -271,4 +271,22 @@ describe('equalInAnyOrder', () => {
     };
     expectToNotDeepEqualInAnyOrder(a, b);
   });
+
+  it('prepends message from expect', () => {
+    expect(
+      () => expect(true, 'message').to.deep.equalInAnyOrder(false),
+    ).to.throw().and.satisfy(e => /^message:/.test(e.message));
+  });
+
+  it('prepends message from equalInAnyOrder', () => {
+    expect(
+      () => expect(true).to.deep.equalInAnyOrder(false, 'message'),
+    ).to.throw().and.satisfy(e => /^message:/.test(e.message));
+  });
+
+  it('prefers message from chain over expect', () => {
+    expect(
+      () => expect(true, 'message1').to.deep.equalInAnyOrder(false, 'message2'),
+    ).to.throw().and.satisfy(e => /^message2:/.test(e.message));
+  });
 });
