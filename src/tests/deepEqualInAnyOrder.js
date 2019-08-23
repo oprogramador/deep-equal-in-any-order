@@ -274,14 +274,14 @@ describe('equalInAnyOrder', () => {
 
   it('prepends message from expect', () => {
     expect(
-      () => expect(true, 'message').to.deep.equalInAnyOrder(false),
-    ).to.throw().and.satisfy(e => /^message:/.test(e.message));
+      () => expect(true, 'message1').to.deep.equalInAnyOrder(false),
+    ).to.throw().and.satisfy(e => /^message1:/.test(e.message));
   });
 
   it('prepends message from equalInAnyOrder', () => {
     expect(
-      () => expect(true).to.deep.equalInAnyOrder(false, 'message'),
-    ).to.throw().and.satisfy(e => /^message:/.test(e.message));
+      () => expect(true).to.deep.equalInAnyOrder(false, 'message1'),
+    ).to.throw().and.satisfy(e => /^message1:/.test(e.message));
   });
 
   it('prefers message from chain over expect', () => {
