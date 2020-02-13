@@ -3303,10 +3303,10 @@ snapdragon@^0.8.1:
     source-map-resolve "^0.5.0"
     use "^3.1.0"
 
-sort-any@^1.1.20:
-  version "1.1.20"
-  resolved "https://registry.yarnpkg.com/sort-any/-/sort-any-1.1.20.tgz#73cac8056a39c65a4c5b2ea84c95de8f22c200eb"
-  integrity sha512-V5yKoOKWBQxAo3+jMN5wc7WtxcAsdMXAX+OfpN6E+XCfq2wzuqMMOpgTVyl9QmyAN/k66APAGvHbQowlo4W2UA==
+sort-any@^1.1.21:
+  version "1.1.21"
+  resolved "https://registry.yarnpkg.com/sort-any/-/sort-any-1.1.21.tgz#91476040c9077b8f21c3092f0f617d353277c52e"
+  integrity sha512-GKcI5a+S/m7Lu67QUmpSr+pgN7BSI6mED83kkndq9ABMSu9jfAb5Kp0cO4JECDSqX+0NcgknUX0HPUhMwypP7A==
   dependencies:
     lodash "^4.17.15"
 
