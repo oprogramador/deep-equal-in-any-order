@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import mapValues from 'lodash.mapvalues';
 import sortAny from 'sort-any';
 
 const sortDeep = (object) => {
@@ -7,7 +7,7 @@ const sortDeep = (object) => {
       return object;
     }
 
-    return _.mapValues(object, sortDeep);
+    return mapValues(object, sortDeep);
   }
 
   return sortAny(object.map(sortDeep));
