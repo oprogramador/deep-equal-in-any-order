@@ -1,6 +1,6 @@
 {
   "name": "deep-equal-in-any-order",
-  "version": "1.0.27",
+  "version": "1.0.28",
   "description": "chai plugin to match objects and arrays deep equality with arrays (including nested ones) being in any order",
   "main": "build/index.js",
   "scripts": {
