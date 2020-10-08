@@ -3,11 +3,16 @@ import sortAny from 'sort-any';
 
 const sortDeep = (object) => {
   if (!Array.isArray(object)) {
-    if (!(typeof object === 'object') || object === null) {
+    // == null checks for undefined as well as null.
+    if (object == null || (typeof object !== 'object')) {
       return object;
     }
 
-    return mapValues(object, sortDeep);
+    try {
+      return mapValues(object, sortDeep);
+    } catch {
+      return object;
+    }
   }
 
   return sortAny(object.map(sortDeep));
