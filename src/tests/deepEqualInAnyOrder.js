@@ -27,6 +27,14 @@ describe('equalInAnyOrder', () => {
     expectToDeepEqualInAnyOrder(null, null);
   });
 
+  it('does not match null with empty object', () => {
+    expectToNotDeepEqualInAnyOrder(null, {});
+  });
+
+  it('does not match a date with empty object', () => {
+    expectToNotDeepEqualInAnyOrder(new Date('2021-01-01'), {});
+  });
+
   it('matches zero with zero', () => {
     expectToDeepEqualInAnyOrder(0, 0);
   });
@@ -67,6 +75,18 @@ describe('equalInAnyOrder', () => {
     expectToNotDeepEqualInAnyOrder([], {});
   });
 
+  it('matches exact dates', () => {
+    const a = new Date('2021-01-01');
+    const b = new Date('2021-01-01');
+    expectToDeepEqualInAnyOrder(a, b);
+  });
+
+  it('does not match distinct dates', () => {
+    const a = new Date('2021-01-01');
+    const b = new Date('2021-01-02');
+    expectToNotDeepEqualInAnyOrder(a, b);
+  });
+
   it('matches same flat objects', () => {
     const a = {
       foo: 'bar',
@@ -91,6 +111,20 @@ describe('equalInAnyOrder', () => {
     expectToDeepEqualInAnyOrder(a, b);
   });
 
+  it('matches same flat objects with different keys order, with a date', () => {
+    const a = {
+      foo: 'bar',
+      foo2: 'bar2',
+      foo3: new Date('2021-01-01'),
+    };
+    const b = {
+      foo2: 'bar2',
+      foo3: new Date('2021-01-01'),
+      foo: 'bar',
+    };
+    expectToDeepEqualInAnyOrder(a, b);
+  });
+
   it('does not match different flat objects', () => {
     const a = {
       foo: 'bar',
@@ -99,6 +133,18 @@ describe('equalInAnyOrder', () => {
     const b = {
       foo: 'bar',
       foo2: 'bar2',
+    };
+    expectToNotDeepEqualInAnyOrder(a, b);
+  });
+
+  it('does not match flat objects with different dates', () => {
+    const a = {
+      foo: 'bar',
+      foo2: new Date('2021-01-01'),
+    };
+    const b = {
+      foo: 'bar',
+      foo2: new Date('2021-01-02'),
     };
     expectToNotDeepEqualInAnyOrder(a, b);
   });
@@ -198,6 +244,7 @@ describe('equalInAnyOrder', () => {
                 'foo11',
                 'foo10',
                 'foo12',
+                new Date('2021-01-01'),
               ],
             },
           },
@@ -217,6 +264,7 @@ describe('equalInAnyOrder', () => {
               foo8: 'bar8',
               foo9: [
                 'foo10',
+                new Date('2021-01-01'),
                 'foo11',
                 'foo12',
               ],

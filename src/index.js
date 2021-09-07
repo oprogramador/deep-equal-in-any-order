@@ -3,7 +3,7 @@ import sortAny from 'sort-any';
 
 const sortDeep = (object) => {
   if (!Array.isArray(object)) {
-    if (!(typeof object === 'object') || object === null) {
+    if (typeof object !== 'object' || object === null || object instanceof Date) {
       return object;
     }
 
