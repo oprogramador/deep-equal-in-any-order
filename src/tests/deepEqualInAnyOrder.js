@@ -173,6 +173,30 @@ describe('equalInAnyOrder', () => {
     expectToDeepEqualInAnyOrder(a, b);
   });
 
+  it('matches same flat arrays of dates in different order', () => {
+    const a = [
+      new Date('2021-01-01'),
+      new Date('2021-01-02'),
+    ];
+    const b = [
+      new Date('2021-01-02'),
+      new Date('2021-01-01'),
+    ];
+    expectToDeepEqualInAnyOrder(a, b);
+  });
+
+  it('does not match flat arrays of different dates', () => {
+    const a = [
+      new Date('2021-01-01'),
+      new Date('2021-01-02'),
+    ];
+    const b = [
+      new Date('2021-01-01'),
+      new Date('2021-01-01'),
+    ];
+    expectToNotDeepEqualInAnyOrder(a, b);
+  });
+
   it('does not match different flat arrays', () => {
     const a = [
       'foo',
@@ -274,6 +298,52 @@ describe('equalInAnyOrder', () => {
       },
     };
     expectToDeepEqualInAnyOrder(a, b);
+  });
+
+  it('does not match same nested objects with different items order and different dates', () => {
+    const a = {
+      foo: 'bar',
+      foo2: {
+        foo3: [
+          {
+            foo5: 'bar5',
+            foo6: 'bar6',
+            foo7: {
+              foo8: 'bar8',
+              foo9: [
+                'foo11',
+                'foo10',
+                'foo12',
+                new Date('2021-01-01'),
+              ],
+            },
+          },
+          'foo4',
+        ],
+      },
+    };
+    const b = {
+      foo: 'bar',
+      foo2: {
+        foo3: [
+          'foo4',
+          {
+            foo5: 'bar5',
+            foo6: 'bar6',
+            foo7: {
+              foo8: 'bar8',
+              foo9: [
+                'foo10',
+                new Date('2021-01-02'),
+                'foo11',
+                'foo12',
+              ],
+            },
+          },
+        ],
+      },
+    };
+    expectToNotDeepEqualInAnyOrder(a, b);
   });
 
   it('does not match different nested objects', () => {

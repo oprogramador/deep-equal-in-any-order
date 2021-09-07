@@ -5500,10 +5500,10 @@ socks@^2.3.3:
     ip "^1.1.5"
     smart-buffer "^4.1.0"
 
-sort-any@^1.2.3:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/sort-any/-/sort-any-1.2.3.tgz#901806cb3ec769b95c6d8eade7528c4f8dda404c"
-  integrity sha512-yJLpmCgDOu7Z6XS6ofzcKRy/Id8yfGB8KkzC7oKAk1F7P3jPWEU8GMxBJWDo5fKp71JYY1bJ8tmaHBfoTx+y8w==
+sort-any@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/sort-any/-/sort-any-2.0.0.tgz#62a5409c9905c9483f03e41e17f46cc451aa7c55"
+  integrity sha512-T9JoiDewQEmWcnmPn/s9h/PH9t3d/LSWi0RgVmXSuDYeZXTZOZ1/wrK2PHaptuR1VXe3clLLt0pD6sgVOwjNEA==
   dependencies:
     lodash "^4.17.21"
 
