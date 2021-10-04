@@ -407,4 +407,10 @@ describe('equalInAnyOrder', () => {
       () => expect(true, 'message1').to.deep.equalInAnyOrder(false, 'message2'),
     ).to.throw().and.satisfy(e => /^message2:/.test(e.message));
   });
+
+  it('matches array of objects in different ordering', () => {
+    const a = [{foo: 'foo'}, {bar: 'bar'}]
+    const b = [{bar: 'bar'}, {foo: 'foo'}]
+    expectToDeepEqualInAnyOrder(a, b);
+  })
 });
