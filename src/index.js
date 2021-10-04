@@ -1,5 +1,4 @@
 import mapValues from 'lodash.mapvalues';
-import sortAny from 'sort-any';
 
 const sortDeep = (object) => {
   if (!Array.isArray(object)) {
@@ -10,7 +9,7 @@ const sortDeep = (object) => {
     return mapValues(object, sortDeep);
   }
 
-  return sortAny(object.map(sortDeep));
+  return new Set(object.map(sortDeep));
 };
 
 module.exports = (chai, utils) => {
