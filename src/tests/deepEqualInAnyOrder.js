@@ -409,8 +409,8 @@ describe('equalInAnyOrder', () => {
   });
 
   it('matches array of objects in different ordering', () => {
-    const a = [{foo: 'foo'}, {bar: 'bar'}]
-    const b = [{bar: 'bar'}, {foo: 'foo'}]
+    const a = [{ foo: 'foo' }, { bar: 'bar' }];
+    const b = [{ bar: 'bar' }, { foo: 'foo' }];
     expectToDeepEqualInAnyOrder(a, b);
-  })
+  });
 });
