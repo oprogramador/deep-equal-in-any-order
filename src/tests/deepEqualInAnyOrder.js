@@ -1,13 +1,19 @@
-const expect = require('deep-equal-in-any-order/tests/expect');
+const { assert, expect } = require('deep-equal-in-any-order/tests/chai-with-plugins');
 
 const expectToDeepEqualInAnyOrder = (a, b) => {
   expect(a).to.deep.equalInAnyOrder(b);
   expect(() => expect(a).to.not.deep.equalInAnyOrder(b)).to.throw();
+
+  assert.deepEqualInAnyOrder(a, b);
+  assert.throws(() => assert.notDeepEqualInAnyOrder(a, b));
 };
 
 const expectToNotDeepEqualInAnyOrder = (a, b) => {
   expect(a).to.not.deep.equalInAnyOrder(b);
   expect(() => expect(a).to.deep.equalInAnyOrder(b)).to.throw();
+
+  assert.notDeepEqualInAnyOrder(a, b);
+  assert.throws(() => assert.deepEqualInAnyOrder(a, b));
 };
 
 describe('equalInAnyOrder', () => {

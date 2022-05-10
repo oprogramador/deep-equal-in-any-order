@@ -27,4 +27,7 @@ module.exports = (chai, utils) => {
       new Assertion(sortDeep(a), msg).to.deep.equal(sortDeep(b));
     }
   });
+
+  chai.assert.deepEqualInAnyOrder = (actual, expected, message) => chai.expect(actual).to.deep.equalInAnyOrder(expected);
+  chai.assert.notDeepEqualInAnyOrder = (actual, expected, message) => chai.expect(actual).to.not.deep.equalInAnyOrder(expected);
 };
