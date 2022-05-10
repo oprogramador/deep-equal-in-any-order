@@ -11,6 +11,6 @@ chai.use(sinonChai);
 chai.use(deepEqualInAnyOrder);
 chai.use(dirtyChai);
 
-const { expect } = chai;
+const { assert, expect } = chai;
 
-module.exports = expect;
+module.exports = { assert, expect };
