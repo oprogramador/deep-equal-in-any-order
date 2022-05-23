@@ -28,6 +28,6 @@ module.exports = (chai, utils) => {
     }
   });
 
-  chai.assert.deepEqualInAnyOrder = (actual, expected) => chai.expect(actual).to.deep.equalInAnyOrder(expected);
-  chai.assert.notDeepEqualInAnyOrder = (actual, expected) => chai.expect(actual).to.not.deep.equalInAnyOrder(expected);
+  chai.assert.deepEqualInAnyOrder = (actual, expected, message) => chai.expect(actual).to.deep.equalInAnyOrder(expected, message);
+  chai.assert.notDeepEqualInAnyOrder = (actual, expected, message) => chai.expect(actual).to.not.deep.equalInAnyOrder(expected, message);
 };
