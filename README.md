@@ -7,7 +7,7 @@
 [![NPM status](https://nodei.co/npm/deep-equal-in-any-order.png?downloads=true&stars=true)](https://npmjs.org/package/deep-equal-in-any-order
 )
 
-Chai plugin to match objects and arrays deep equality with arrays (including nested ones) being in any order.
+[Chai](https://www.chaijs.com/) plugin to match objects and arrays deep equality with arrays (including nested ones) being in any order.
 
 It works in similar way as `deep.equal` but it doesn't checks the arrays order (at any level of nested objects and arrays). The array elements can be any JS entity (boolean, null, number, string, object, array...).
 
