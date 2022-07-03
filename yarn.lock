@@ -1241,6 +1241,13 @@ chai-as-promised@^7.1.1:
   dependencies:
     check-error "^1.0.2"
 
+chai-roughly-v2@^2.0.12:
+  version "2.0.12"
+  resolved "https://registry.yarnpkg.com/chai-roughly-v2/-/chai-roughly-v2-2.0.12.tgz#da31b66a819f38fb937076faaa435c4116ccb0a3"
+  integrity sha512-zf6A5nv5VK4VVld4HDxQptZMhgDFybLk/Rn0+2UC7AZIuA3z6FoHK3fMvEgB3VXmqgmLnCM5yseHNz8XJqK14A==
+  dependencies:
+    deep-eql "^4.1.0"
+
 chai-subset@^1.6.0:
   version "1.6.0"
   resolved "https://registry.npmjs.org/chai-subset/-/chai-subset-1.6.0.tgz#a5d0ca14e329a79596ed70058b6646bd6988cfe9"
@@ -1648,6 +1655,13 @@ deep-eql@^3.0.1:
   version "3.0.1"
   resolved "https://registry.npmjs.org/deep-eql/-/deep-eql-3.0.1.tgz#dfc9404400ad1c8fe023e7da1df1c147c4b444df"
   integrity sha512-+QeIQyN5ZuO+3Uk5DYh6/1eKO0m0YmJFGNmFHGACpf1ClL1nmlV/p4gNgbl2pJGxgXb4faqo6UE+M5ACEMyVcw==
+  dependencies:
+    type-detect "^4.0.0"
+
+deep-eql@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/deep-eql/-/deep-eql-4.1.0.tgz#67f2078a06d899d9d954762ef61358f2eef00507"
+  integrity sha512-4YM7QHOMBoVWqGPnp3OPPK7+WCIhUR2OTpahlNQFiyTH3QEeiu9MtBiTAJBkfny4PNhpFbV/jm3lv0iCfb40MA==
   dependencies:
     type-detect "^4.0.0"
 

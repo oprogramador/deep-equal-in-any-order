@@ -419,4 +419,56 @@ describe('equalInAnyOrder', () => {
     const b = [{ bar: 'bar' }, { foo: 'foo' }];
     expectToDeepEqualInAnyOrder(a, b);
   });
+
+  it('works in combination with chai-roughly', () => {
+    const a = {
+      values: [122.9, 0],
+    };
+    const b = {
+      values: [0, 123],
+    };
+    expect(a).to.roughly(0.1).to.deep.equalInAnyOrder(b);
+  });
+
+  it('works in combination with chai-roughly - negate', () => {
+    const a = {
+      values: [122.8, 0],
+    };
+    const b = {
+      values: [0, 123],
+    };
+    expect(a).to.roughly(0.1).to.not.deep.equalInAnyOrder(b);
+  });
+
+  it('works in combination with chai-roughly - nested', () => {
+    const a = {
+      lorem: [
+        {
+          foo: {
+            foo1: [122.9, 0],
+          },
+          bar: {
+            bar1: [299.9, 0, 499.9, 199.9],
+          },
+        },
+        9.9,
+        5.1,
+      ],
+    };
+    const b = {
+      lorem: [
+        5,
+        10,
+        {
+          foo: {
+            foo1: [0, 123],
+          },
+          bar: {
+            bar1: [0, 500, 200, 300],
+          },
+        },
+      ],
+    };
+    expect(a).to.roughly(0.2).to.deep.equalInAnyOrder(b);
+  });
 });

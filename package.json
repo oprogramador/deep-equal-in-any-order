@@ -42,6 +42,7 @@
     "babel-register": "^6.26.0",
     "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",
+    "chai-roughly-v2": "^2.0.12",
     "chai-subset": "^1.6.0",
     "dirty-chai": "^2.0.1",
     "eslint": "^7.23.0",

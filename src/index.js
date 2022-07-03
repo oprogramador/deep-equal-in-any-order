@@ -16,16 +16,9 @@ const sortDeep = (object) => {
 module.exports = (chai, utils) => {
   const { Assertion } = chai;
   utils.addMethod(Assertion.prototype, 'equalInAnyOrder', function equalInAnyOrder(b, m) {
-    const a = this.__flags.object;
-    const { negate, message } = this.__flags;
-
-    const msg = m || message;
-
-    if (negate) {
-      new Assertion(sortDeep(a), msg).to.not.deep.equal(sortDeep(b));
-    } else {
-      new Assertion(sortDeep(a), msg).to.deep.equal(sortDeep(b));
-    }
+    const a = utils.flag(this, 'object');
+    utils.flag(this, 'object', sortDeep(a));
+    this.equal(sortDeep(b), m);
   });
 
   chai.assert.deepEqualInAnyOrder = (actual, expected, message) => chai.expect(actual)
