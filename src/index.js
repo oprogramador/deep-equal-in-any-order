@@ -2,6 +2,9 @@ import mapValues from 'lodash.mapvalues';
 import sortAny from 'sort-any';
 
 const sortDeep = (object) => {
+  if (object instanceof Map) {
+    return sortAny([...object]);
+  }
   if (!Array.isArray(object)) {
     if (typeof object !== 'object' || object === null || object instanceof Date) {
       return object;

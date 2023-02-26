@@ -81,6 +81,54 @@ describe('equalInAnyOrder', () => {
     expectToNotDeepEqualInAnyOrder([], {});
   });
 
+  it('matches same empty maps', () => {
+    const a = new Map([]);
+    const b = new Map([]);
+    expectToDeepEqualInAnyOrder(a, b);
+  });
+
+  it('matches same maps', () => {
+    const a = new Map([['a', 1], ['b', 3]]);
+    const b = new Map([['a', 1], ['b', 3]]);
+    expectToDeepEqualInAnyOrder(a, b);
+  });
+
+  it('matches same maps nested', () => {
+    const a = { x: new Map([['a', 1], ['b', 3]]), y: new Map([['c', 5]]) };
+    const b = { x: new Map([['a', 1], ['b', 3]]), y: new Map([['c', 5]]) };
+    expectToDeepEqualInAnyOrder(a, b);
+  });
+
+  it('matches same maps nested inside another map', () => {
+    const a = { x: new Map([['a', 1], [new Map([['c', 25]]), new Map([['c', 5]])]]), y: new Map([['c', 5]]) };
+    const b = { x: new Map([['a', 1], [new Map([['c', 25]]), new Map([['c', 5]])]]), y: new Map([['c', 5]]) };
+    expectToDeepEqualInAnyOrder(a, b);
+  });
+
+  it('does not match different maps nested inside another map - as a key', () => {
+    const a = { x: new Map([['a', 1], [new Map([['c', 20]]), new Map([['c', 5]])]]), y: new Map([['c', 5]]) };
+    const b = { x: new Map([['a', 1], [new Map([['c', 25]]), new Map([['c', 5]])]]), y: new Map([['c', 5]]) };
+    expectToNotDeepEqualInAnyOrder(a, b);
+  });
+
+  it('does not match different maps nested inside another map - as a value', () => {
+    const a = { x: new Map([['a', 1], [new Map([['c', 25]]), new Map([['c', 5]])]]), y: new Map([['c', 5]]) };
+    const b = { x: new Map([['a', 1], [new Map([['c', 25]]), new Map([['c', 50]])]]), y: new Map([['c', 5]]) };
+    expectToNotDeepEqualInAnyOrder(a, b);
+  });
+
+  it('does not match different maps', () => {
+    const a = new Map([['a', 1], ['b', 3]]);
+    const b = new Map([['a', 1], ['b', 2]]);
+    expectToNotDeepEqualInAnyOrder(a, b);
+  });
+
+  it('does not match different maps nested', () => {
+    const a = { x: new Map([['a', 1], ['b', 3]]), y: new Map([['c', 5]]) };
+    const b = { x: new Map([['a', 1], ['b', 0]]), y: new Map([['c', 5]]) };
+    expectToNotDeepEqualInAnyOrder(a, b);
+  });
+
   it('matches exact dates', () => {
     const a = new Date('2021-01-01');
     const b = new Date('2021-01-01');
@@ -272,6 +320,7 @@ describe('equalInAnyOrder', () => {
               foo8: 'bar8',
               foo9: [
                 'foo11',
+                new Map([['a', 1], ['b', 3]]),
                 'foo10',
                 'foo12',
                 new Date('2021-01-01'),
@@ -297,6 +346,7 @@ describe('equalInAnyOrder', () => {
                 new Date('2021-01-01'),
                 'foo11',
                 'foo12',
+                new Map([['a', 1], ['b', 3]]),
               ],
             },
           },
@@ -304,6 +354,54 @@ describe('equalInAnyOrder', () => {
       },
     };
     expectToDeepEqualInAnyOrder(a, b);
+  });
+
+  it('does not match same nested objects with different items order and different maps', () => {
+    const a = {
+      foo: 'bar',
+      foo2: {
+        foo3: [
+          {
+            foo5: 'bar5',
+            foo6: 'bar6',
+            foo7: {
+              foo8: 'bar8',
+              foo9: [
+                'foo11',
+                new Map([['a', 10], ['b', 3]]),
+                'foo10',
+                'foo12',
+                new Date('2021-01-01'),
+              ],
+            },
+          },
+          'foo4',
+        ],
+      },
+    };
+    const b = {
+      foo: 'bar',
+      foo2: {
+        foo3: [
+          'foo4',
+          {
+            foo5: 'bar5',
+            foo6: 'bar6',
+            foo7: {
+              foo8: 'bar8',
+              foo9: [
+                'foo10',
+                new Date('2021-01-01'),
+                'foo11',
+                'foo12',
+                new Map([['a', 1], ['b', 3]]),
+              ],
+            },
+          },
+        ],
+      },
+    };
+    expectToNotDeepEqualInAnyOrder(a, b);
   });
 
   it('does not match same nested objects with different items order and different dates', () => {
