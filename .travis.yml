@@ -8,7 +8,7 @@ node_js:
 script:
   - yarn install --non-interactive
   - yarn lint
-  - yarn test
+  - yarn coverage
 jobs:
   include:
     - stage: deploy

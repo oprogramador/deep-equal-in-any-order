@@ -5,6 +5,7 @@
   "main": "build/index.js",
   "scripts": {
     "build": "rm -rf build && babel src --out-dir build --ignore tests/",
+    "coverage": "nyc --check-coverage=true npm run test",
     "lint": "eslint src",
     "prepublishOnly": "npm run build",
     "test": "mocha -r babel-register --recursive src/tests --timeout 5000"
@@ -49,6 +50,7 @@
     "eslint-config-airbnb-improved": "^5.0.0",
     "eslint-import-resolver-babel-module": "^5.2.0",
     "mocha": "^8.3.2",
+    "nyc": "^15.1.0",
     "semantic-release": "19",
     "sinon": "^10.0.0",
     "sinon-as-promised": "^4.0.3",
