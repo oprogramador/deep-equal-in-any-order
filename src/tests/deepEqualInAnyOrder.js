@@ -81,6 +81,36 @@ describe('equalInAnyOrder', () => {
     expectToNotDeepEqualInAnyOrder([], {});
   });
 
+  it('matches same empty sets', () => {
+    const a = new Set([]);
+    const b = new Set([]);
+    expectToDeepEqualInAnyOrder(a, b);
+  });
+
+  it('matches same sets', () => {
+    const a = new Set([1, 20]);
+    const b = new Set([20, 1]);
+    expectToDeepEqualInAnyOrder(a, b);
+  });
+
+  it('does not match different sets', () => {
+    const a = new Set([1, 5]);
+    const b = new Set([1, 3]);
+    expectToNotDeepEqualInAnyOrder(a, b);
+  });
+
+  it('matches same set nested inside another set', () => {
+    const a = new Set([1, new Set([3, 4, 100, 20])]);
+    const b = new Set([new Set([100, 3, 4, 20]), 1]);
+    expectToDeepEqualInAnyOrder(a, b);
+  });
+
+  it('does not match a different set nested inside another set', () => {
+    const a = new Set([1, new Set([3, 4, 21])]);
+    const b = new Set([new Set([3, 4, 20]), 1]);
+    expectToNotDeepEqualInAnyOrder(a, b);
+  });
+
   it('matches same empty maps', () => {
     const a = new Map([]);
     const b = new Map([]);
@@ -126,6 +156,36 @@ describe('equalInAnyOrder', () => {
   it('does not match different maps nested', () => {
     const a = { x: new Map([['a', 1], ['b', 3]]), y: new Map([['c', 5]]) };
     const b = { x: new Map([['a', 1], ['b', 0]]), y: new Map([['c', 5]]) };
+    expectToNotDeepEqualInAnyOrder(a, b);
+  });
+
+  it('matches same set nested inside a map', () => {
+    const a = { x: new Map([[new Set('a0'), 1], ['b', 3]]), y: new Map([['c', 5]]) };
+    const b = { x: new Map([[new Set('a0'), 1], ['b', 3]]), y: new Map([['c', 5]]) };
+    expectToDeepEqualInAnyOrder(a, b);
+  });
+
+  it('does not match a different set nested inside a map', () => {
+    const a = { x: new Map([[new Set('a'), 1], ['b', 3]]), y: new Map([['c', 5]]) };
+    const b = { x: new Map([[new Set('a0'), 1], ['b', 3]]), y: new Map([['c', 5]]) };
+    expectToNotDeepEqualInAnyOrder(a, b);
+  });
+
+  it('matches same map nested inside a set ', () => {
+    const a = { x: new Set([123, new Map([[new Set('a0'), 1], ['b', 3]])]), y: new Map([['c', 5]]) };
+    const b = { x: new Set([new Map([[new Set('a0'), 1], ['b', 3]]), 123]), y: new Map([['c', 5]]) };
+    expectToDeepEqualInAnyOrder(a, b);
+  });
+
+  it('does not match different map (different value) nested inside a set', () => {
+    const a = { x: new Set([123, new Map([[new Set('a0'), 1], ['b', 3]])]), y: new Map([['c', 5]]) };
+    const b = { x: new Set([new Map([[new Set('a0'), 1], ['b', 30]]), 123]), y: new Map([['c', 5]]) };
+    expectToNotDeepEqualInAnyOrder(a, b);
+  });
+
+  it('does not match different map (different key) nested inside a set', () => {
+    const a = { x: new Set([123, new Map([[new Set('a0'), 1], ['b', 3]])]), y: new Map([['c', 5]]) };
+    const b = { x: new Set([new Map([[new Set('a0'), 1], ['b0', 3]]), 123]), y: new Map([['c', 5]]) };
     expectToNotDeepEqualInAnyOrder(a, b);
   });
 
