@@ -7631,12 +7631,10 @@ socks@^2.6.2:
     ip "^2.0.0"
     smart-buffer "^4.2.0"
 
-sort-any@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/sort-any/-/sort-any-2.0.0.tgz#62a5409c9905c9483f03e41e17f46cc451aa7c55"
-  integrity sha512-T9JoiDewQEmWcnmPn/s9h/PH9t3d/LSWi0RgVmXSuDYeZXTZOZ1/wrK2PHaptuR1VXe3clLLt0pD6sgVOwjNEA==
-  dependencies:
-    lodash "^4.17.21"
+sort-any@^4.0.0:
+  version "4.0.7"
+  resolved "https://registry.yarnpkg.com/sort-any/-/sort-any-4.0.7.tgz#8e348cfe00af4708b63cea10a34c57170438d265"
+  integrity sha512-UuZVEXClHW+bVa6ZBQ4biTWmLXMP7y6/jv5arfA0rKk7ZExy+5Zm19uekIqqDx6ZuvUMu7z5Ba9FfBi6FlGXPQ==
 
 source-map-resolve@^0.5.0:
   version "0.5.2"

@@ -58,6 +58,6 @@
   },
   "dependencies": {
     "lodash.mapvalues": "^4.6.0",
-    "sort-any": "^2.0.0"
+    "sort-any": "^4.0.0"
   }
 }
